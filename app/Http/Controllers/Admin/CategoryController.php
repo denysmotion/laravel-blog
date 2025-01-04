@@ -22,7 +22,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
@@ -30,7 +30,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => ['required', 'max:255'],
+            'meta_desc' => ['max:255'],
+        ]);
+
+        Category::query()->create($validated);
+        return redirect()->route('categories.index')->with('success', 'Category added successfully');
     }
 
     /**

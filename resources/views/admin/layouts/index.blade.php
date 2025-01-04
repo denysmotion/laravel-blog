@@ -312,7 +312,42 @@
       </aside>
       <!--end::Sidebar-->
       <!--begin::App Main-->
+      <main class="app-main">
+        @if ($errors->any())
+            <div class="app-content mt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        @if (session()->has('success'))
+            <div class="app-content mt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-success">
+                                <ul class="mb-0">
+                                    {{ session('success') }}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         @yield('content')
+      </main>
+
       <!--end::App Main-->
       <!--begin::Footer-->
       <footer class="app-footer">
