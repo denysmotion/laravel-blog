@@ -1,10 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController as UserController;
 use App\Http\Controllers\Admin\MainController as MainController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/admin', [MainController::class, 'index'])->name('admin.dashboard');
+Route::middleware('guest')->group(function() {
+    Route::get('/login', [UserController::class, 'login'])->name('login');
+    Route::post('/login', [UserController::class, 'authenticate'])->name('login.authenticate');
+});
+
+Route::prefix('admin')->group(function() {
+    Route::get('/', [MainController::class, 'index'])->name('admin.dashboard');
+})->middleware('is_admin');
