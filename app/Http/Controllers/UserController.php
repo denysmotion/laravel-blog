@@ -25,7 +25,7 @@ class UserController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->is_admin) {
-                return redirect()->intended('admin.dashboard');
+                return redirect()->intended('admin');
             } else {
                 return redirect()->intended('home');
             }

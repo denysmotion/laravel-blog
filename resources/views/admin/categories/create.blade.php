@@ -13,6 +13,7 @@
               <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-end">
                   <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                  <li class="breadcrumb-item"><a href="{{ route('categories.index') }}">Categories</a></li>
                   <li class="breadcrumb-item active" aria-current="page">New category</li>
                 </ol>
               </div>
@@ -39,7 +40,7 @@
                             <!--begin::Body-->
                             <div class="card-body">
                                 <div class="row mb-3">
-                                    <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                    <label for="title" class="col-sm-2 col-form-label required">Title</label>
                                     <div class="col-sm-10">
                                     <input name="title" type="text" class="form-control" id="title" value="{{ old('title') }}">
                                     </div>

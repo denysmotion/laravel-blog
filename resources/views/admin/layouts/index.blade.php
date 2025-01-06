@@ -58,6 +58,18 @@
       integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4="
       crossorigin="anonymous"
     />
+
+    <style>
+        .cke_notifications_area {
+            display: none;
+        }
+
+        label.required::before {
+            content: '* ';
+            color: red;
+            font-weight: 700;
+        }
+    </style>
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -304,6 +316,12 @@
                   <p>Categories</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('posts.index') }}" class="nav-link">
+                  <i class="nav-icon bi bi-pencil-square"></i>
+                  <p>Posts</p>
+                </a>
+              </li>
             </ul>
             <!--end::Sidebar Menu-->
           </nav>
@@ -387,6 +405,7 @@
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="{{ asset('assets/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+    <script src="{{ asset('assets/admin/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/admin/js/adminlte.js') }}"></script>
 
     <script
