@@ -42,6 +42,7 @@
     />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
+    <link rel="stylesheet" href="{{ asset('assets/admin/colorbox/colorbox.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
@@ -406,6 +407,8 @@
     <script src="{{ asset('assets/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script src="{{ asset('assets/admin/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('assets/admin/colorbox/jquery.colorbox-min.js') }}"></script>
+    <script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
     <script src="{{ asset('assets/admin/js/adminlte.js') }}"></script>
 
     <script

@@ -40,6 +40,7 @@
                         <thead>
                             <tr>
                             <th style="width: 10px">ID</th>
+                            <th>Thumb</th>
                             <th>Title</th>
                             <th>Category</th>
                             <th style="width: 150px">Actions</th>
@@ -49,6 +50,7 @@
                             @foreach($posts as $post)
                             <tr class="align-middle">
                                 <td>{{ $post->id }}</td>
+                                <td><img src="/{{ $post->thumb ?: env('NO_IMAGE') }}" alt="{{ $post->title }} thumb" height="50"></td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->category->title }}</td>
                                 <td class="d-flex gap-2">
