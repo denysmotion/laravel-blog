@@ -364,6 +364,21 @@
                 </div>
             </div>
         @endif
+        @if (session()->has('error'))
+            <div class="app-content mt-3">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    {{ session('error') }}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
         @yield('content')
       </main>
 

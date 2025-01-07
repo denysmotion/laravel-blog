@@ -18,5 +18,5 @@ $(document).on('click','.popup_selector',function (event) {
 function processSelectedFile(filePath, requestingField) {
     let fileUrl = filePath.replace(/\\/g, '/');
     $('#' + requestingField).val(fileUrl).trigger('change');
-    $('.post-thumb').html(`<img src="/${fileUrl}" alt="Post thumb" widht="200px">`)
+    $('.post-thumb').html(`<img src="/${fileUrl}" alt="Post thumb" width="200px">`);
 }

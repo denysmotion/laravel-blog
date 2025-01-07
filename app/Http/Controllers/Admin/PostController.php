@@ -59,7 +59,11 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::query()->findOrFail($id);
+
+        $categories = Category::query()->pluck('title', 'id')->all();
+
+        return view('admin.posts.edit', compact(['post', 'categories']));
     }
 
     /**
@@ -67,7 +71,19 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $post = Post::query()->findOrFail($id);
+
+        $validated = $request->validate([
+            'title' => ['required', 'max:255'],
+            'meta_desc' => ['max:255'],
+            'content' => ['required'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'thumb' => ['max:255'],
+        ]);
+
+        $post->update($validated);
+
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully');
     }
 
     /**

@@ -82,6 +82,10 @@ class CategoryController extends Controller
     {
         $category = Category::query()->findOrFail($id);
 
+        if ($category->posts()->count()) {
+            return redirect()->route('categories.index')->with('error', 'There are posts in this category');
+        }
+
         $category->delete();
 
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
