@@ -15,7 +15,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::query()->with('category')->paginate();
-        return view('admin.posts.index', compact('posts'));
+
+        $basket_cnt = Post::onlyTrashed()->count();
+
+        return view('admin.posts.index', compact(['posts', 'basket_cnt']));
     }
 
     /**
@@ -96,5 +99,30 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+    }
+
+    public function basket()
+    {
+        $posts = Post::onlyTrashed()->with('category')->paginate();
+
+        return view('admin.posts.basket', compact('posts'));
+    }
+
+    public function basketRestore(string $id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+
+        $post->restore();
+
+        return redirect()->route('posts.basket')->with('success', 'Post restored successfully');
+    }
+
+    public function basketDestroy(string $id)
+    {
+        $post = Post::withTrashed()->findOrFail($id);
+
+        $post->forceDelete();
+
+        return redirect()->route('posts.basket')->with('success', 'Post deleted from basket successfully');
     }
 }
