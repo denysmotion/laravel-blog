@@ -318,6 +318,12 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a href="{{ route('tags.index') }}" class="nav-link">
+                  <i class="nav-icon bi bi-tags"></i>
+                  <p>Tags</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="{{ route('posts.index') }}" class="nav-link">
                   <i class="nav-icon bi bi-pencil-square"></i>
                   <p>Posts</p>

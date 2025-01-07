@@ -61,7 +61,7 @@
                                     <form action="{{ route('posts.basket.destroy', ['post' => $post->id]) }}" method="post">
                                         @csrf
                                         @method('delete')
-                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Delete category {{ $post->title }}?')"><i class="bi bi-trash"></i></button>
+                                        <button class="btn btn-danger" type="submit" onclick="return confirm('Delete post {{ $post->title }}?')"><i class="bi bi-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

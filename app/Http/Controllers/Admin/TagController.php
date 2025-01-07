@@ -3,19 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $categories = Category::query()->paginate();
-        
-        return view('admin.categories.index', compact('categories'));
+        $tags = Tag::query()->paginate();
+
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -36,9 +36,9 @@ class CategoryController extends Controller
             'meta_desc' => ['max:255'],
         ]);
 
-        Category::query()->create($validated);
+        Tag::query()->create($validated);
 
-        return redirect()->route('categories.index')->with('success', 'Category added successfully');
+        return redirect()->route('tags.index')->with('success', 'Tag added successfully');
     }
 
     /**
@@ -54,9 +54,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $category = Category::query()->findOrFail($id);
+        $tag = Tag::query()->findOrFail($id);
 
-        return view('admin.categories.edit', compact('category'));
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -64,16 +64,16 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $category = Category::query()->findOrFail($id);
+        $tag = Tag::query()->findOrFail($id);
 
         $validated = $request->validate([
             'title' => ['required', 'max:255'],
             'meta_desc' => ['max:255'],
         ]);
 
-        $category->update($validated);
+        $tag->update($validated);
 
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+        return redirect()->route('tags.index')->with('success', 'Tag updated successfully');
     }
 
     /**
@@ -81,14 +81,14 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        $category = Category::query()->findOrFail($id);
+        $tag = Tag::query()->findOrFail($id);
 
-        if ($category->posts()->count()) {
-            return redirect()->route('categories.index')->with('error', 'There are posts in this category');
-        }
+        // if ($tag->posts()->count()) {
+        //     return redirect()->route('categories.index')->with('error', 'There are posts in this tag');
+        // }
 
-        $category->delete();
+        $tag->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+        return redirect()->route('tags.index')->with('success', 'Tag deleted successfully');
     }
 }
