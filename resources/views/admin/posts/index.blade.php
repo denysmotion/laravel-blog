@@ -50,6 +50,7 @@
                             <th>Thumb</th>
                             <th>Title</th>
                             <th>Category</th>
+                            <th>Tags</th>
                             <th style="width: 150px">Actions</th>
                             </tr>
                         </thead>
@@ -60,6 +61,7 @@
                                 <td><img src="/{{ $post->thumb ?: env('NO_IMAGE') }}" alt="{{ $post->title }} thumb" height="50"></td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->category->title }}</td>
+                                <td>{{ $post->tags->implode('title', ', ') }}</td>
                                 <td class="d-flex gap-2">
                                     <a class="btn btn-primary" href="{{ route('posts.edit', ['post' => $post->id]) }}">
                                         <i class="bi bi-pencil-square"></i>

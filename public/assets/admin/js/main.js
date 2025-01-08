@@ -190,3 +190,7 @@ const option_sparkline3 = {
 
 const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
 sparkline3.render();
+
+$(document).ready(function () {
+    $('.select2').select2();
+});

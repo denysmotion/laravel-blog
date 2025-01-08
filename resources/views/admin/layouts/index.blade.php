@@ -43,6 +43,7 @@
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
     <link rel="stylesheet" href="{{ asset('assets/admin/colorbox/colorbox.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/admin/select2/css/select2.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/adminlte.css') }}" />
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
@@ -426,11 +427,9 @@
     ></script>
     <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
     <script src="{{ asset('assets/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script src="{{ asset('assets/admin/ckeditor/ckeditor.js') }}"></script>
     <script src="{{ asset('assets/admin/colorbox/jquery.colorbox-min.js') }}"></script>
     <script type="text/javascript" src="/packages/barryvdh/elfinder/js/standalonepopup.js"></script>
-    <script src="{{ asset('assets/admin/js/adminlte.js') }}"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"
@@ -453,6 +452,10 @@
       integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY="
       crossorigin="anonymous"
     ></script>
+
+    <script src="{{ asset('assets/admin/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/adminlte.js') }}"></script>
 
   </body>
   <!--end::Body-->

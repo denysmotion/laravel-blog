@@ -83,9 +83,9 @@ class TagController extends Controller
     {
         $tag = Tag::query()->findOrFail($id);
 
-        // if ($tag->posts()->count()) {
-        //     return redirect()->route('categories.index')->with('error', 'There are posts in this tag');
-        // }
+        if ($tag->posts()->count()) {
+            return redirect()->route('tags.index')->with('error', 'There are posts for this tag');
+        }
 
         $tag->delete();
 
