@@ -63,7 +63,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::query()->findOrFail($id);
+
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -71,7 +73,25 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::query()->findOrFail($id);
+
+        $validated = $request->validate([
+            'name' => ['required', 'max:255'],
+            'email' => ['required', 'email', 'max:255', 'unique:users,email,' . $id],
+            'password' => ['nullable', 'confirmed', 'min:6'],
+            'is_admin' => ['boolean'],
+        ]);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->is_admin = $request->boolean('is_admin');
+        if ($request->filled('password')) {
+            $user->password = $request->password;
+        }
+
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'User updated successfuly');
     }
 
     /**
@@ -79,6 +99,14 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::query()->findOrFail($id);
+
+        if ($user->id == auth()->user()->id) {
+            return redirect()->route('users.index')->with('error', 'You cannot delete your profile');
+        }
+
+        $user->delete();
+
+        return redirect()->route('users.index')->with('success', 'User deleted successfuly');
     }
 }

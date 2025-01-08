@@ -11,6 +11,12 @@ class UserController extends Controller
 {
     public function login()
     {
+        // User::create([
+        //     'name' => 'admin',
+        //     'email' => 'email@email.com',
+        //     'password' => '123456'
+        // ]);
+
         return view('user.login');
     }
 
