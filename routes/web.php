@@ -16,6 +16,8 @@ Route::middleware('guest')->group(function() {
     Route::post('/login', [UserController::class, 'authenticate'])->name('login.authenticate');
 });
 
+Route::get('/logout', [UserController::class, 'logout'])->middleware('auth')->name('logout');
+
 Route::prefix('admin')->middleware('is_admin')->group(function() {
     Route::get('/', [MainController::class, 'index'])->name('admin.dashboard');
     Route::resource('categories', CategoryController::class);
