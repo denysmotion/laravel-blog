@@ -252,7 +252,7 @@
                 <!--end::Menu Body-->
                 <!--begin::Menu Footer-->
                 <li class="user-footer">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="{{ route('users.edit', ['user' => auth()->user()->id]) }}" class="btn btn-default btn-flat">Profile</a>
                   <a href="{{ route('logout') }}" class="btn btn-default btn-flat float-end">Sign out</a>
                 </li>
                 <!--end::Menu Footer-->
@@ -317,6 +317,12 @@
                 <a href="{{ route('posts.index') }}" class="nav-link">
                   <i class="nav-icon bi bi-pencil-square"></i>
                   <p>Posts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('users.index') }}" class="nav-link">
+                  <i class="nav-icon bi bi-people"></i>
+                  <p>Users</p>
                 </a>
               </li>
             </ul>

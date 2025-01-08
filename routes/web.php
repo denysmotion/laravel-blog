@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\TagController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,4 +29,6 @@ Route::prefix('admin')->middleware('is_admin')->group(function() {
     Route::get('posts/basket/{post}/restore', [PostController::class, 'basketRestore'])->name('posts.basket.restore');
     Route::delete('posts/basket/{post}/destroy', [PostController::class, 'basketDestroy'])->name('posts.basket.destroy');
     Route::resource('posts', PostController::class);
+
+    Route::resource('users', AdminUserController::class);
 });
