@@ -39,8 +39,8 @@ class Post extends Model
         return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 
-    public function getPostDate(): string
+    public function getPostDate($format = 'd F, Y'): string
     {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d F, Y');
+        return Carbon::createFromFormat('Y-m-d H:i:s', (string)$this->created_at)->format($format);
     }
 }

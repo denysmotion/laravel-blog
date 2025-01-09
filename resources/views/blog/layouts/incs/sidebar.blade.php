@@ -8,7 +8,7 @@
                     <div class="w-100 justify-content-between">
                         <img src="{{ $post->thumb ? asset($post->thumb) : asset('no-image.png') }}" alt="{{ $post->title }}" class="img-fluid float-left">
                         <h5 class="mb-1">{{ $post->title }}</h5>
-                        <small>{{ $post->getPostDate() }}</small>
+                        <small>{{ $post->getPostDate('d M, Y') }}</small>
                     </div>
                 </a>
                 @endforeach
