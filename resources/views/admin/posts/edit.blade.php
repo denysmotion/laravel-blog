@@ -50,6 +50,12 @@
                                 </div>
 
                                 <div class="mb-3">
+                                    <label for="excerpt" class="form-label">Excerpt</label>
+                                    <input type="text" name="excerpt" class="form-control" id="excerpt"
+                                           value="{{ $post->excerpt }}">
+                                </div>
+
+                                <div class="mb-3">
                                     <label for="content"
                                            class="form-label required">Content</label>
                                     <textarea class="form-control ckeditor" name="content" id="content" cols="30"

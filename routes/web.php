@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MainController;
-use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\PostController as AdminPostController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/posts/{slug}', [PostController::class, 'show'])->name('front.posts.show');
 
 Route::middleware('guest')->group(function() {
     Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -25,10 +25,10 @@ Route::prefix('admin')->middleware('is_admin')->group(function() {
 
     Route::resource('tags', TagController::class);
 
-    Route::get('posts/basket', [PostController::class, 'basket'])->name('posts.basket');
-    Route::get('posts/basket/{post}/restore', [PostController::class, 'basketRestore'])->name('posts.basket.restore');
-    Route::delete('posts/basket/{post}/destroy', [PostController::class, 'basketDestroy'])->name('posts.basket.destroy');
-    Route::resource('posts', PostController::class);
+    Route::get('posts/basket', [AdminPostController::class, 'basket'])->name('posts.basket');
+    Route::get('posts/basket/{post}/restore', [AdminPostController::class, 'basketRestore'])->name('posts.basket.restore');
+    Route::delete('posts/basket/{post}/destroy', [AdminPostController::class, 'basketDestroy'])->name('posts.basket.destroy');
+    Route::resource('posts', AdminPostController::class);
 
     Route::resource('users', AdminUserController::class);
 });

@@ -43,6 +43,7 @@ class PostController extends Controller
             'title' => ['required', 'max:255'],
             'meta_desc' => ['max:255'],
             'content' => ['required'],
+            'excerpt' => ['required', 'max:255'],
             'category_id' => ['required', 'exists:categories,id'],
             'tags' => ['exists:tags,id'],
             'thumb' => ['max:255'],
@@ -88,6 +89,7 @@ class PostController extends Controller
             'title' => ['required', 'max:255'],
             'meta_desc' => ['max:255'],
             'content' => ['required'],
+            'excerpt' => ['required', 'max:255'],
             'category_id' => ['required', 'exists:categories,id'],
             'tags' => ['exists:tags,id'],
             'thumb' => ['max:255'],
@@ -132,9 +134,7 @@ class PostController extends Controller
     {
         $post = Post::withTrashed()->findOrFail($id);
 
-        if ($post->tags()->count()) {
-            return redirect()->route('posts.basket')->with('error', 'There are tags for this post');
-        }
+        $post->tags()->detach();
 
         $post->forceDelete();
 

@@ -12,7 +12,7 @@ class Post extends Model
 {
     use Sluggable, SoftDeletes;
 
-    protected $fillable = ['title', 'meta_desc', 'content', 'category_id', 'thumb'];
+    protected $fillable = ['title', 'meta_desc', 'content', 'excerpt', 'category_id', 'thumb'];
 
     /**
      * Return the sluggable configuration array for this model.
