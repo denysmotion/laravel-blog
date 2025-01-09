@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::query()->with(['category', 'tags'])->paginate();
+        $posts = Post::query()->with(['category', 'tags'])->orderBy('id', 'desc')->paginate();
 
         $basket_cnt = Post::onlyTrashed()->count();
 

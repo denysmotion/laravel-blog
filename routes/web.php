@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 
 Route::get('/', [PostController::class, 'index'])->name('home');
-Route::get('/posts/{slug}', [PostController::class, 'show'])->name('front.posts.show');
+Route::get('/posts/{slug}', [PostController::class, 'show'])->name('blog.posts.show');
 
 Route::middleware('guest')->group(function() {
     Route::get('/login', [UserController::class, 'login'])->name('login');
